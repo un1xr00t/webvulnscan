@@ -16,11 +16,7 @@ A Ruby-based web vulnerability scanner that checks for common vulnerabilities su
 - Cross-Site Request Forgery (CSRF) vulnerability detection
 - Directory bruteforcing to find accessible directories and files
 
-<<<<<<< HEAD
-## Requirementss
-=======
 ## Requirements
->>>>>>> 50c6926ff05bebf399f907e2381ce7e368487398
 
 - Ruby (version 2.6 or higher)
 - Nokogiri gem
