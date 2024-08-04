@@ -2,7 +2,9 @@
 
 A Ruby-based web vulnerability scanner that checks for common vulnerabilities such as SQL Injection, Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), and directory bruteforcing. This tool is designed for educational purposes only and should be used responsibly with permission from the target website's owner.
 
-![webscan](https://github.com/user-attachments/assets/4a0e7d49-163b-4a56-938f-322b56e2de5b)
+![vulnscan](https://github.com/user-attachments/assets/4ee77fef-6cfc-4317-85f9-966ae3b2778e)
+
+
 
 
 ## Disclaimer
@@ -42,7 +44,7 @@ A Ruby-based web vulnerability scanner that checks for common vulnerabilities su
 4. Ensure `payloads.txt` and `bruteforce_wordlist.txt` are in the same directory as `webvulnscan.rb`.
 
 ## Usage
-
+![webscan](https://github.com/user-attachments/assets/4a0e7d49-163b-4a56-938f-322b56e2de5b)
 1. Run the script:
     ```sh
     ruby webvulnscan.rb
