@@ -44,13 +44,14 @@ A Ruby-based web vulnerability scanner that checks for common vulnerabilities su
 4. Ensure `payloads.txt` and `bruteforce_wordlist.txt` are in the same directory as `webvulnscan.rb`.
 
 ## Usage
-![webscan](https://github.com/user-attachments/assets/4a0e7d49-163b-4a56-938f-322b56e2de5b)
+
 1. Run the script:
     ```sh
     ruby webvulnscan.rb
     ```
 
 2. Enter the target domain when prompted (e.g., `example.com`).
+![webscan](https://github.com/user-attachments/assets/4a0e7d49-163b-4a56-938f-322b56e2de5b)
 
 ## Output
 
