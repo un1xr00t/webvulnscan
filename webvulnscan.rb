@@ -155,7 +155,7 @@ end
 display_banner
 
 puts colorize("Version 2.0", 34)
-
+puts colorize("Created by un1xr00t", 34)
 display_disclaimer
 target_url = get_user_input
 
