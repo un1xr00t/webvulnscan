@@ -2,7 +2,8 @@
 
 A Ruby-based web vulnerability scanner that checks for common vulnerabilities such as SQL Injection, Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), and directory bruteforcing. This tool is designed for educational purposes only and should be used responsibly with permission from the target website's owner.
 
-![vulnscan](https://github.com/user-attachments/assets/4ee77fef-6cfc-4317-85f9-966ae3b2778e)
+![webvulnscan](https://github.com/user-attachments/assets/aa083324-96bf-4490-86f6-59a4ec88c68e)
+
 
 
 
