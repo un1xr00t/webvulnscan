@@ -61,3 +61,4 @@ A Ruby-based web vulnerability scanner that checks for common vulnerabilities su
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+Test
