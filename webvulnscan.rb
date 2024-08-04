@@ -6,6 +6,22 @@ def colorize(text, color_code)
   "\e[#{color_code}m#{text}\e[0m"
 end
 
+def display_banner
+  banner = <<~BANNER
+     ██▒   █▓ █    ██  ██▓     ███▄    █   ██████  ▄████▄   ▄▄▄       ███▄    █ 
+    ▓██░   █▒ ██  ▓██▒▓██▒     ██ ▀█   █ ▒██    ▒ ▒██▀ ▀█  ▒████▄     ██ ▀█   █ 
+     ▓██  █▒░▓██  ▒██░▒██░    ▓██  ▀█ ██▒░ ▓██▄   ▒▓█    ▄ ▒██  ▀█▄  ▓██  ▀█ ██▒
+      ▒██ █░░▓▓█  ░██░▒██░    ▓██▒  ▐▌██▒  ▒   ██▒▒▓▓▄ ▄██▒░██▄▄▄▄██ ▓██▒  ▐▌██▒
+       ▒▀█░  ▒▒█████▓ ░██████▒▒██░   ▓██░▒██████▒▒▒ ▓███▀ ░ ▓█   ▓██▒▒██░   ▓██░
+       ░ ▐░  ░▒▓▒ ▒ ▒ ░ ▒░▓  ░░ ▒░   ▒ ▒ ▒ ▒▓▒ ▒ ░░ ░▒ ▒  ░ ▒▒   ▓▒█░░ ▒░   ▒ ▒ 
+       ░ ░░  ░░▒░ ░ ░ ░ ░ ▒  ░░ ░░   ░ ▒░░ ░▒  ░ ░  ░  ▒     ▒   ▒▒ ░░ ░░   ░ ▒░
+         ░░   ░░░ ░ ░   ░ ░      ░   ░ ░ ░  ░  ░  ░          ░   ▒      ░   ░ ░ 
+          ░     ░         ░  ░         ░       ░  ░ ░            ░  ░         ░ 
+         ░                                        ░                             
+  BANNER
+  puts colorize(banner, 31)
+end
+
 def display_disclaimer
   puts "=========================================="
   puts colorize("DISCLAIMER: This tool is for educational purposes only.", 33)
@@ -93,12 +109,28 @@ end
 
 def csrf_check(url)
   response = Net::HTTP.get_response(URI(url))
-  if response.body.include?('csrf_token')
-    puts "No CSRF vulnerability found."
-  else
-    puts colorize("Possible CSRF vulnerability found.", 31)
-    puts colorize("Cross-Site Request Forgery (CSRF) vulnerabilities occur when unauthorized commands are transmitted from a user that the web application trusts.", 33)
-    puts colorize("Fix: Implement anti-CSRF tokens and ensure state-changing operations require a valid token. More info: https://owasp.org/www-community/attacks/csrf", 33)
+  document = Nokogiri::HTML(response.body)
+  forms = document.css('form')
+
+  if forms.empty?
+    puts colorize("No forms found on the page. CSRF vulnerability is unlikely.", 32)
+    return
+  end
+
+  forms.each do |form|
+    has_csrf_token = false
+
+    # Check common CSRF token names
+    ['csrf_token', 'authenticity_token', 'csrfmiddlewaretoken'].each do |token_name|
+      has_csrf_token ||= form.css("input[name='#{token_name}']").any?
+    end
+
+    unless has_csrf_token
+      puts colorize("Possible CSRF vulnerability found in form with action: #{form['action']}", 31)
+      puts colorize("Fix: Implement anti-CSRF tokens and ensure state-changing operations require a valid token. More info: https://owasp.org/www-community/attacks/csrf", 33)
+    else
+      puts "No CSRF vulnerability found in form with action: #{form['action']}"
+    end
   end
 rescue => e
   puts colorize("Error during CSRF check: #{e.message}", 31)
@@ -119,6 +151,10 @@ def directory_bruteforce(url, wordlist)
 rescue => e
   puts colorize("Error during Directory Bruteforce: #{e.message}", 31)
 end
+
+display_banner
+
+puts colorize("Version 2.0", 34)
 
 display_disclaimer
 target_url = get_user_input
