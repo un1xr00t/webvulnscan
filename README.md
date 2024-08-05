@@ -33,7 +33,7 @@ A Ruby-based web vulnerability scanner that checks for common vulnerabilities su
 
 2. Install the required gem:
     ```sh
-    gem install nokogiri
+    sudo gem install nokogiri
     ```
 
 3. Clone this repository:
