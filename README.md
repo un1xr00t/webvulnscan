@@ -38,8 +38,8 @@ A Ruby-based web vulnerability scanner that checks for common vulnerabilities su
 
 3. Clone this repository:
     ```sh
-    git clone https://github.com/yourusername/web-vulnerability-scanner.git
-    cd web-vulnerability-scanner
+    git clone https://github.com/un1xr00t/webvulnscan.git
+    cd https://github.com/un1xr00t/webvulnscan
     ```
 
 4. Ensure `payloads.txt` and `bruteforce_wordlist.txt` are in the same directory as `webvulnscan.rb`.
